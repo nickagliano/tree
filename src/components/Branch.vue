@@ -1,0 +1,42 @@
+<template>
+  <div
+    :id="id"
+    class="branch"
+    v-bind:class="[isActive ? 'centered-branch' : '']"
+  >
+    <h1>------------</h1>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "Branch",
+  props: {
+    isActive: {
+      default: false,
+      type: Boolean,
+    },
+    id: String,
+  },
+  mounted() {},
+};
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+.centered-node {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+svg {
+  height: 104px;
+  width: 104px;
+  position: absolute;
+  right: 8%;
+  bottom: 20%;
+}
+</style>

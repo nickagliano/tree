@@ -1,4 +1,9 @@
 # tree
+Web application for zooming through family trees. Made with Vue, GSAP.
+## versions
+ I use `asdf` to manage the versions. The versions I use can be found in the `.tool-versions` file.
+
+ The versions for Vue and other dependencies can be found in the `package.json` and `yarn.lock` files.
 
 ## Project setup
 ```
@@ -19,6 +24,3 @@ yarn build
 ```
 yarn lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
