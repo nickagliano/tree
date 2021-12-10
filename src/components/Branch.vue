@@ -3,9 +3,7 @@
     :id="id"
     class="branch"
     v-bind:class="[isActive ? 'centered-branch' : '']"
-  >
-    <h1>------------</h1>
-  </div>
+  ></div>
 </template>
 
 <script>
@@ -17,6 +15,7 @@ export default {
       type: Boolean,
     },
     id: String,
+    generation: Number,
   },
   mounted() {},
 };
@@ -38,5 +37,11 @@ svg {
   position: absolute;
   right: 8%;
   bottom: 20%;
+}
+.branch {
+  max-width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 </style>

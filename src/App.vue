@@ -20,6 +20,7 @@ export default {
   data() {
     return {
       names: names,
+      count: 1,
       generation: 1,
       branches: [],
     };
@@ -28,7 +29,11 @@ export default {
     buildNewNode: function (name) {
       var ComponentClass = Vue.extend(Node);
       var newNode = new ComponentClass({
-        propsData: { ref: "node" + this.generation, name: name },
+        propsData: {
+          ref: "node" + this.count,
+          name: name,
+          generation: this.generation,
+        },
       });
 
       return newNode;
@@ -37,7 +42,10 @@ export default {
       var ComponentClass = Vue.extend(Branch);
 
       var newBranch = new ComponentClass({
-        propsData: { ref: "branch" + this.generation },
+        propsData: {
+          ref: "branch" + this.generation,
+          generation: this.generation,
+        },
       });
 
       return newBranch;
@@ -47,10 +55,10 @@ export default {
 
       this.names.forEach(function (name) {
         var isPowerOfTwo =
-          (Math.log(self.generation) / Math.log(2)) % 1 === 0 &&
-          self.generation !== 1;
+          (Math.log(self.count) / Math.log(2)) % 1 === 0 && self.count !== 1;
 
         if (isPowerOfTwo) {
+          self.generation += 1;
           // create new branch!
           var newBranch = self.buildNewBranch();
           newBranch.$mount();
@@ -61,7 +69,7 @@ export default {
         var newNode = self.buildNewNode(name);
         newNode.$mount();
         currentBranch.appendChild(newNode.$el);
-        self.generation += 1;
+        self.count += 1;
       });
     },
   },
@@ -80,7 +88,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  max-width: 100vw;
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+  overflow-y: hidden; /* Hide vertical scrollbar */
 }
 li {
   list-style: none;

@@ -1,6 +1,10 @@
 <template>
-  <div class="node" v-bind:class="[isActive ? 'centered-node' : '']">
-    <svg>
+  <div
+    class="node"
+    v-bind:class="[isActive ? 'centered-node' : '']"
+    v-bind:style="{ transform: 'scale(' + 1 / generation + ')' }"
+  >
+    <!-- <svg>
       <circle
         id="circle"
         cx="28"
@@ -10,8 +14,8 @@
         fill="none"
         stroke-width="4"
       />
-    </svg>
-    <h1>{{ name }}</h1>
+    </svg> -->
+    <h3>{{ name }}</h3>
   </div>
 </template>
 
@@ -27,7 +31,9 @@ export default {
       default: false,
       type: Boolean,
     },
+    generation: Number,
   },
+  computed: {},
   mounted() {},
 };
 </script>
@@ -48,5 +54,8 @@ svg {
   position: absolute;
   right: 8%;
   bottom: 20%;
+}
+.node {
+  transform: scale(v-bind(1 / generation));
 }
 </style>
